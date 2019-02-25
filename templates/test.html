@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <!-- <iframe id='a01c7215' name='a01c7215' src='http://ec2-54-169-251-163.ap-southeast-1.compute.amazonaws.com/revive/www/delivery/afr.php?zoneid=1&amp;cb=INSERT_RANDOM_NUMBER_HERE' frameborder='0' scrolling='no' width='1080' height='1920'><a href='http://ec2-54-169-251-163.ap-southeast-1.compute.amazonaws.com/revive/www/delivery/ck.php?n=a3ab059c&amp;cb=INSERT_RANDOM_NUMBER_HERE' target='_blank'><img src='http://ec2-54-169-251-163.ap-southeast-1.compute.amazonaws.com/revive/www/delivery/avw.php?zoneid=1&amp;cb=INSERT_RANDOM_NUMBER_HERE&amp;n=a3ab059c' border='0' alt='' /></a></iframe> -->
+    <button id='test' onclick='addAdvertiser()'>Hey Yo!</button>
+</body>
+<script>
+
+    function addAdvertiser(){
+      const data = {"account_name":"srinivas"};
+      $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: "http://127.0.0.1:8000/addAdvertiser/",
+        data: JSON.stringify(data),
+        success: function(res){
+        console.log(res);
+        },
+        error: function(e){
+        console.log({"response":"failed","error":e.responseText});
+        }
+      });
+    }
+
+    function getAdvertiser(){
+      const data = {"account_id":"26"};
+      $.ajax({
+        type: "GET",
+        dataType: "json",
+        url: "http://127.0.0.1:8000/getAdvertiser",
+        data: data,
+        success: function(res){
+        console.log(res);
+        },
+        error: function(e){
+        console.log({"response":"failed","error":e.responseText});
+        }
+      });
+    }
+
+    function modifyAdvertiser(){
+      const data = {"account_id":"26","contact":"65641151","email":"srinu@gmail.com"};
+      $.ajax({
+        type: "PUT",
+        dataType: "json",
+        url: "http://127.0.0.1:8000/modifyAdvertiser/",
+        data: JSON.stringify(data),
+        success: function(res){
+        console.log(res);
+        },
+        error: function(e){
+        console.log({"response":"failed","error":e.responseText});
+        }
+      });
+    }
+
+</script>
+</html>
